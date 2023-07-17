@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @CrossOrigin("*")
@@ -22,8 +23,26 @@ public class ProductoController {
 
 
     @GetMapping("/lista")
-    public ResponseEntity<List<ProductoEntity>> ListaDeProductos(){
-        return ResponseEntity.ok(productoService.ListaDeProductos());
+    public List<ProductoEntity> ListaProductos(){
+        return productoService.obtenerProductos();
     }
+
+
+    @PostMapping("/nuevo")
+    public ResponseEntity<ProductoEntity> crearNuevoProducto(@RequestBody ProductoEntity nuevoProducto) {
+        return ResponseEntity.ok(productoService.crearNuevoProducto(nuevoProducto));
+    }
+
+    @PutMapping ("editar/{íd}")
+    public ResponseEntity<ProductoEntity> editarProductoPorId(@PathVariable Integer producto_id, @RequestBody ProductoEntity productoEditar)
+    {return ResponseEntity.ok(productoService.editarProductoPorId(producto_id, productoEditar));}
+
+    @GetMapping("obtener/{producto_id}")
+    private ResponseEntity<ProductoEntity> obtenerProductoPorId(@PathVariable("producto_id") Integer producto_id) {
+        Optional<ProductoEntity> productoElegido = productoService.ObtenerProductoPorId(producto_id);
+        return ResponseEntity.ok(productoElegido.get());
+    }
+    @DeleteMapping("borrar/{producto_id}")
+    public void borrarProductoPorId(@PathVariable("producto_id") Integer producto_id){ productoService.borrarProductoPorId(producto_id);}
 
 }
