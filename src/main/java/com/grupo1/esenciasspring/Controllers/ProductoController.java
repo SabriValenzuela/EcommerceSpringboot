@@ -43,6 +43,7 @@ public class ProductoController {
         return ResponseEntity.ok(productoElegido.get());
     }
     @DeleteMapping("borrar/{producto_id}")
-    public void borrarProductoPorId(@PathVariable("producto_id") Integer producto_id){ productoService.borrarProductoPorId(producto_id);}
+    public void borrarProductoPorId(@PathVariable("producto_id") Integer producto_id)
+    { productoService.borrarProductoPorId(producto_id);}
 
 }
