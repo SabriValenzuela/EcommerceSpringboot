@@ -19,4 +19,19 @@ public class ProductoEntity {
     private String producto_descripcion;
     private String producto_categoria;
     private Integer producto_cantidad;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "Producto_orden",
+            joinColumns = @JoinColumn(name = "id_producto", referencedColumnName = "producto_id"),
+            inverseJoinColumns = @JoinColumn(name = "idproducto", referencedColumnName = "producto_id"))
+
+    @ManyToOne //producto con usuario
+    @JoinColumn(name = "producto_id")
+    private ProductoEntity productoDelUsuario;
+
+    @ManyToOne //producto con inventario
+    @JoinColumn(name = "producto_id")
+    private ProductoEntity ProductoDelInventario;
 }
+

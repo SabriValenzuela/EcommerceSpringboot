@@ -1,5 +1,6 @@
 package com.grupo1.esenciasspring.Entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -27,7 +28,12 @@ public class OrdenEntity {
     @CreationTimestamp//Indica que el atributo siguiente es una fecha de creación
     private LocalDateTime createdAt;
 
-    //@ManyToOne
-    //@JoinColumn(name = "cliente_id")
-    //private ClienteEntity ordenAsignado;
+    @OneToOne
+    private ComprobantedepagoEntity comprobantedepagoEntity;
+
+@JsonManagedReference
+    @ManyToOne
+    @JoinColumn(name= "cliente_id")
+    private ClienteEntity ordendelcliente;
+
 }

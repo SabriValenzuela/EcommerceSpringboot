@@ -33,10 +33,10 @@ public class BlogEntity {
     @CreationTimestamp//Indica que el atributo siguiente es una fecha de creación
     private LocalDateTime createdAt;
 
-    //@JsonBackReference
-    //@ManyToOne
-   //* @JoinColumn(name= "registro_id")//Indicamos el nombre de la columna donde está la llave foránea
-    //private RegistroPacienteEntity pacienteConsulta; *//
+    @JsonBackReference
+    @ManyToOne
+    @JoinColumn(name= "blog_id")
+    private UsuarioEntity usuariodelblog;
 
 
 }
