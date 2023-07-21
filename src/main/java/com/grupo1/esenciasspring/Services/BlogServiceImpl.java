@@ -33,7 +33,7 @@ public class BlogServiceImpl implements BlogService {
 
     @Override
     public void borrarPostPorId(Long id) {
-
+    blogRepository.deleteById(id);
     }
 
     @Override

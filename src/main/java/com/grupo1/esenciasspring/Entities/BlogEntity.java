@@ -21,7 +21,7 @@ import java.util.Date;
 public class BlogEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer blog_id;
+    private Long blog_id;
     @JsonFormat(
             pattern = "dd-MM-yyyy"
     )
