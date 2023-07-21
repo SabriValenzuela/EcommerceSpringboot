@@ -27,6 +27,7 @@ public class SecurityConfig {
                         .permitAll());
         return http.build();
     }
+    @Bean
     public UserDetailsService userDetailsService(){
         UserDetails user =
                 User.withDefaultPasswordEncoder()

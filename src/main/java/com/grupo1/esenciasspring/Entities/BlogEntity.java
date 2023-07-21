@@ -35,8 +35,8 @@ public class BlogEntity {
 
     @JsonBackReference
     @ManyToOne
-    @JoinColumn(name= "blog_id")
-    private UsuarioEntity usuariodelblog;
+    @JoinColumn(name= "usuario_id")
+    private UsuarioEntity usuarioDelBlog;
 
 
 }

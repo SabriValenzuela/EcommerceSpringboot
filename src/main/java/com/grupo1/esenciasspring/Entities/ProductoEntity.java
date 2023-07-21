@@ -1,7 +1,9 @@
 package com.grupo1.esenciasspring.Entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
+import java.util.List;
 
 @Entity
 @Table(name = "producto")
@@ -25,13 +27,15 @@ public class ProductoEntity {
             name = "Producto_orden",
             joinColumns = @JoinColumn(name = "id_producto", referencedColumnName = "producto_id"),
             inverseJoinColumns = @JoinColumn(name = "idproducto", referencedColumnName = "producto_id"))
+    private List<OrdenEntity> OrdenesyProducto;
 
     @ManyToOne //producto con usuario
-    @JoinColumn(name = "producto_id")
-    private ProductoEntity productoDelUsuario;
+    @JoinColumn(name = "usuario_id")
+    private UsuarioEntity ProductosDelUsuario;
 
+    @JsonBackReference
     @ManyToOne //producto con inventario
-    @JoinColumn(name = "producto_id")
-    private ProductoEntity ProductoDelInventario;
+    @JoinColumn(name = "inventario_total")
+    private InventarioEntity ProductoDelInventario;
 }
 

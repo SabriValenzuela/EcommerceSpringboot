@@ -1,8 +1,11 @@
 package com.grupo1.esenciasspring.Entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.List;
 
 
 @Entity
@@ -22,11 +25,10 @@ public class ClienteEntity {
     private String cliente_whatsapp;
     private Integer orden_id;
 
-   // @JsonManagedReference
-    //@OneToMany(mappedBy = "ordenAsignado", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    //private List<OrdenEntity> orden;
 
-
+    @JsonBackReference
+    @OneToMany(mappedBy = "ordendelcliente", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<OrdenEntity> ordenCliente;
 
 
 }

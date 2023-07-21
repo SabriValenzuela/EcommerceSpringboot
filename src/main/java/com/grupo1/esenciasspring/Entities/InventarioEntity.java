@@ -1,6 +1,7 @@
 package com.grupo1.esenciasspring.Entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.http.ResponseEntity;
@@ -21,10 +22,11 @@ public class InventarioEntity {
     private Integer producto_id;
     private Integer producto_cantidad;
 
-@JsonBackReference
-    @OneToMany(mappedBy = "inventarioproducto", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JsonManagedReference
+    @OneToMany(mappedBy = "ProductoDelInventario", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<ProductoEntity> productosdelinventario;
 @JsonBackReference
-    @OneToMany(mappedBy = "inventariousuario", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<UsuarioEntity> usuariodelinventario;
+    @ManyToOne
+    @JoinColumn(name = "usuario_id")
+    private UsuarioEntity usuarioInventario;
 }

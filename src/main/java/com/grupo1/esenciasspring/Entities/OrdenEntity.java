@@ -23,7 +23,6 @@ public class OrdenEntity {
     private Integer orden_cantidaddeproducto;
     private Date orden_fecha;
     private Integer producto_id;
-    private Integer cliente_id;
 
     @CreationTimestamp//Indica que el atributo siguiente es una fecha de creación
     private LocalDateTime createdAt;
@@ -31,7 +30,7 @@ public class OrdenEntity {
     @OneToOne
     private ComprobantedepagoEntity comprobantedepagoEntity;
 
-@JsonManagedReference
+    @JsonManagedReference
     @ManyToOne
     @JoinColumn(name= "cliente_id")
     private ClienteEntity ordendelcliente;
