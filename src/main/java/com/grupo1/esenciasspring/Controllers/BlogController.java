@@ -24,7 +24,16 @@ public class BlogController {
     }
     @GetMapping("/obtener")
     public List<BlogEntity> obtenerPost(){
-        return blogService.obtenerPost();
+        return blogService.obtenerPost();}
+
+
+    @DeleteMapping("/borrar/{id}")
+    public void borrarPostporId (@PathVariable Long id) {
+        blogService.borrarPostPorId(id);
     }
+
+
+
+
 }
 
