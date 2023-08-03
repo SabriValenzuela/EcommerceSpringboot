@@ -16,9 +16,9 @@ public class ProductoController {
     @Autowired
     ProductoServiceImpl productoService;
 
-    @GetMapping("/{nombre}")
+   @GetMapping("/{nombre}")
     public ResponseEntity<ProductoEntity> buscarProductoPorNombre(@PathVariable String nombre) {
-        return ResponseEntity.ok(productoService.buscarProductoPorNombre(nombre));
+      return ResponseEntity.ok(productoService.buscarProductoPorNombre(nombre));
     }
 
 
@@ -33,14 +33,14 @@ public class ProductoController {
         return ResponseEntity.ok(productoService.crearNuevoProducto(nuevoProducto));
     }
 
-    @PutMapping ("editar/{íd}")
+    @PutMapping ("editar/{id}")
     public ResponseEntity<ProductoEntity> editarProductoPorId(@PathVariable Integer producto_id, @RequestBody ProductoEntity productoEditar)
     {return ResponseEntity.ok(productoService.editarProductoPorId(producto_id, productoEditar));}
 
     @GetMapping("obtener/{producto_id}")
     private ResponseEntity<ProductoEntity> obtenerProductoPorId(@PathVariable("producto_id") Integer producto_id) {
-        Optional<ProductoEntity> productoElegido = productoService.ObtenerProductoPorId(producto_id);
-        return ResponseEntity.ok(productoElegido.get());
+        ProductoEntity productoElegido = productoService.ObtenerProductoPorId(producto_id);
+        return ResponseEntity.ok((ProductoEntity) productoElegido );
     }
     @DeleteMapping("borrar/{producto_id}")
     public void borrarProductoPorId(@PathVariable("producto_id") Integer producto_id)

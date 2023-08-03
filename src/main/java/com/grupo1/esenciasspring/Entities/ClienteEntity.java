@@ -23,10 +23,11 @@ public class ClienteEntity {
     private String cliente_correo;
     private String cliente_nombre;
     private String cliente_whatsapp;
+    private String cliente_informacion;
     private Integer orden_id;
 
 
-    @JsonBackReference
+    @JsonManagedReference
     @OneToMany(mappedBy = "ordendelcliente", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<OrdenEntity> ordenCliente;
 

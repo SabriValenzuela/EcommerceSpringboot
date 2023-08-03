@@ -16,7 +16,7 @@ public interface ProductoService {
 
     ProductoEntity editarProductoPorId (Integer producto_id, ProductoEntity productoEntity);
 
-    Optional<ProductoEntity> ObtenerProductoPorId(Integer producto_id);
+    ProductoEntity ObtenerProductoPorId(Integer producto_id);
 
     void borrarProductoPorId(Integer producto_id);
 

@@ -15,7 +15,7 @@ public class ProductoServiceImpl implements ProductoService{
 
     @Override
     public ProductoEntity buscarProductoPorNombre(String nombre) {
-        return productoRepository.buscarProductoPorNombre(nombre);
+    return productoRepository.buscarProductoPorNombre(nombre);
     }
 
 @Override
@@ -39,16 +39,15 @@ public class ProductoServiceImpl implements ProductoService{
             productoSeleccionado.setProducto_precio(productoEditar.getProducto_precio());
             productoSeleccionado.setProducto_descripcion(productoEditar.getProducto_descripcion());
             productoSeleccionado.setProducto_categoria(productoEditar.getProducto_categoria());
-            productoSeleccionado.setProducto_cantidad(productoEditar.getProducto_cantidad());
+            productoSeleccionado.setProducto_stock(productoEditar.getProducto_stock());
             return productoRepository.save(productoSeleccionado);
         }
         return null;
     }
 
     @Override
-    public Optional<ProductoEntity> ObtenerProductoPorId(Integer producto_id) {
-        Optional<ProductoEntity> productoElegido = productoRepository.findById(producto_id);
-        return productoElegido;
+    public ProductoEntity ObtenerProductoPorId(Integer producto_id) {
+        return (ProductoEntity) this.productoRepository.findById(producto_id).get();
     }
 
     @Override

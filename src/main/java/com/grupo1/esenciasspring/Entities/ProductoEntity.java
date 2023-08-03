@@ -20,22 +20,18 @@ public class ProductoEntity {
     private Integer producto_precio;
     private String producto_descripcion;
     private String producto_categoria;
-    private Integer producto_cantidad;
+       private Integer producto_stock;
+
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
-            name = "Producto_orden",
-            joinColumns = @JoinColumn(name = "id_producto", referencedColumnName = "producto_id"),
-            inverseJoinColumns = @JoinColumn(name = "idproducto", referencedColumnName = "producto_id"))
+            name = "orden_productos",
+            joinColumns = @JoinColumn(name = "id_producto"),
+            inverseJoinColumns = @JoinColumn(name = "orden_id"))
     private List<OrdenEntity> OrdenesyProducto;
 
-    @ManyToOne //producto con usuario
-    @JoinColumn(name = "usuario_id")
-    private UsuarioEntity ProductosDelUsuario;
 
-    @JsonBackReference
-    @ManyToOne //producto con inventario
-    @JoinColumn(name = "inventario_total")
-    private InventarioEntity ProductoDelInventario;
+
 }
+
 

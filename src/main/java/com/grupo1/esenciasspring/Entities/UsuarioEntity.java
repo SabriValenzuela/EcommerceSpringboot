@@ -21,12 +21,7 @@ public class UsuarioEntity {
     private Integer usuario_id;
     private String usuario_clave;
 
-@JsonManagedReference
-    @OneToMany(mappedBy = "ProductosDelUsuario", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<ProductoEntity> productosdelusuario;
-@JsonManagedReference
-    @OneToMany(mappedBy = "usuarioInventario", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<InventarioEntity> inventariodelusuario;
+
 @JsonManagedReference
     @OneToMany(mappedBy = "usuarioDelBlog", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<BlogEntity> blogdelusuario;

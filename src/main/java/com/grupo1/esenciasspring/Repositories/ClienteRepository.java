@@ -2,7 +2,10 @@ package com.grupo1.esenciasspring.Repositories;
 
 import com.grupo1.esenciasspring.Entities.ClienteEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface CLienteRepository extends JpaRepository<ClienteEntity, Integer> {
+@Repository
+
+public interface ClienteRepository extends JpaRepository<ClienteEntity, Integer> {
 
 }
